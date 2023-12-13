@@ -10,6 +10,10 @@ ExpressWs(app);
 
 const PORT = 3000;
 
+app.get("/", (req, res) => {
+  res.send(`Hello World!`);
+});
+
 app.post("/incoming", (req, res) => {
   res.status(200);
   res.type("text/xml");

@@ -18,10 +18,15 @@ app.post("/incoming", (req, res) => {
   res.status(200);
   res.type("text/xml");
   res.end(`
+
+
+
   <Response>
     <Connect>
       <Stream url="wss://${process.env.SERVER}/connection" />
     </Connect>
+    <Say voice="woman" language="en">"This call may be monitored or recorded for quality assurance and training purposes."</Say>
+    <Dial>+18557788460</Dial>
   </Response>
   `);
 });

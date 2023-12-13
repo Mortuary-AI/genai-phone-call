@@ -33,12 +33,12 @@ app.ws("/connection", (ws, req) => {
     const msg = JSON.parse(data);
     if (msg.event === "start") {
       streamSid = msg.start.streamSid;
-      console.log(`Starting Media Stream for ${streamSid}`);
+      console.log('Starting Media Stream for ${streamSid}');
     } else if (msg.event === "media") {
       transcriptionService.send(msg.media.payload);
     } else if (msg.event === "mark") {
       const label = msg.mark.name;
-      console.log(`Media completed mark (${msg.sequenceNumber}): ${label}`)
+      console.log('Media completed mark (${msg.sequenceNumber}): ${label}')
     }
   });
 
@@ -48,7 +48,7 @@ app.ws("/connection", (ws, req) => {
   });
 
   ttsService.on("speech", (audio, label) => {
-    console.log(`Sending audio to Twilio ${audio.length} b64 characters`);
+    console.log('Sending audio to Twilio ${audio.length} b64 characters');
     ws.send(
       JSON.stringify({
         streamSid,
@@ -72,4 +72,4 @@ app.ws("/connection", (ws, req) => {
 });
 
 app.listen(PORT);
-console.log(`Server running on port ${PORT}`);
+console.log('Server running on port ${PORT}');

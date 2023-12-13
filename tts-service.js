@@ -12,7 +12,7 @@ class TextToSpeechService extends EventEmitter {
   async generate(text) {
     const outputFormat = "pcm_16000";
     const response = await fetch(
-      `https://api.elevenlabs.io/v1/text-to-speech/${this.config.voiceId}/stream?output_format=${outputFormat}`,
+      'https://api.elevenlabs.io/v1/text-to-speech/${this.config.voiceId}/stream?output_format=${outputFormat}',
       {
         method: "POST",
         headers: {
@@ -27,7 +27,7 @@ class TextToSpeechService extends EventEmitter {
         }),
       }
     );
-    console.log(`Response status from elevenlabs: ${response.status}`);
+    console.log('Response status from elevenlabs: ${response.status}');
     try {
       const audioArrayBuffer = await response.arrayBuffer();
       const wav = new WaveFile();
